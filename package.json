@@ -1,5 +1,5 @@
 {
-  "name": "Bin2Dec",
+  "name": "bintodec",
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.js",

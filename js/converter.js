@@ -1,30 +1,33 @@
 /*
 Próxima implementação:
-1. Permitir mais de um valor no mesmo campo
-Exemplo:    1001101 1010101 1011101 
-            ABCD 1342D FADF 
+Permitir mais de um valor no mesmo campo
+    Exemplo:    1001101 1010101 1011101 
+                ABCD 1342D FADF 
 */
 function dec_to(str, destiny) {
     let converted = [];
+    let convertedFilter;
     let number = parseInt(str);
 
     if (number == 0)
         return 0;
 
-    else {
-        while (number > 0) {
-            converted.push(number % destiny);
-            number = parseInt(number / destiny);
-        }
+    while (number > 0) {
+        converted.push(number % destiny);
+        number = parseInt(number / destiny);
+    }
 
-        if (destiny == 16) {
+    switch (destiny) {
+        case 8:
+        case 2:
+        case 10:
+            convertedFilter = converted.reverse().toString().replace(/,/g, '');
+            return convertedFilter;
+        case 16:
             for (let i = 0; i < converted.length; i++)
-                converted[i] = translateHexTo(converted[i], 'hex');
-            return converted.reverse().toString();
-        }
-
-        if (destiny == 8 || destiny == 2 || destiny == 10)
-            return converted.reverse().toString();
+                converted[i] = translate(converted[i]);
+            convertedFilter = converted.reverse().toString().replace(/,/g, '');
+            return convertedFilter;
     }
 }
 
@@ -32,129 +35,90 @@ function to_dec(str, origin) {
     let strNumber = str.toString();
     let originalNumber = strNumber.split('');
     let convertedNumber = 0;
+
     originalNumber.reverse();
 
-    if (origin == 2 || origin == 8 || origin == 10) {
-        for (let i = 0; i < originalNumber.length; i++) {
-            convertedNumber += Math.pow(origin, i) * originalNumber[i];
-        }
-        return convertedNumber;
-    }
+    switch (origin) {
+        case 2:
+        case 8:
+        case 10:
+            for (let i = 0; i < originalNumber.length; i++)
+                convertedNumber += Math.pow(origin, i) * originalNumber[i];
+            return convertedNumber;
 
-    else if (origin == 16) {
-        for (let i = 0; i < originalNumber.length; i++) {
-            if (Number.isInteger(originalNumber[i] * 1))
-                convertedNumber += Math.pow(origin, i) * (originalNumber[i]);
-            else
-                convertedNumber += Math.pow(origin, i) * (translateHexTo(originalNumber[i], 'dec'));
-        }
-        return convertedNumber;
-    }
-}
-
-function bin_to(str, destiny) {
-    let dec = to_dec(str, 2);
-
-    if (destiny == 8)
-        return dec_to(dec, 8);
-
-    if (destiny == 16)
-        return dec_to(dec, 16);
-
-    if (destiny == 10)
-        return dec;
-}
-
-function to_bin(str, origin) {
-    if (origin == 8) {
-        let dec = to_dec(str, 8);
-        return dec_to(dec, 2);
-    }
-
-    if (origin == 16) {
-        let dec = to_dec(str, 16);
-        return dec_to(dec, 2);
+        case 16:
+            for (let i = 0; i < originalNumber.length; i++) {
+                if (Number.isInteger(originalNumber[i] * 1))
+                    convertedNumber += Math.pow(origin, i) * (originalNumber[i]);
+                else
+                    convertedNumber += Math.pow(origin, i) * (translate(originalNumber[i]));
+            }
+            return convertedNumber;
     }
 }
 
-function hex_to(str, destiny) {
-    let dec = to_dec(str, 16);
-    return dec_to(dec, destiny);
+function converter(number, origin, destiny) {
+    if (origin == 10)
+        return dec_to(number, destiny);
+
+
+    else {
+        let numberInDec = to_dec(number, origin);
+        return dec_to(numberInDec, destiny);
+    }
 }
 
-function oct_to(str, destiny) {
-    let dec = to_dec(str, 8);
-    return dec_to(dec, destiny);
-}
+function translate(str) {
+    if (str >= 0 && str <= 9)
+        return str;
 
-function translateHexTo(str, base) {
-    if (base === 'hex') {
-        str *= 1;
-
-        if (str >= 0 && str < 9)
-            return str;
-        if (str == 10)
+    switch (str) {
+        case 10:
             return 'A';
-        if (str == 11)
+        case 11:
             return 'B';
-        if (str == 12)
+        case 12:
             return 'C';
-        if (str == 13)
+        case 13:
             return 'D';
-        if (str == 14)
+        case 14:
             return 'E';
-        if (str == 15)
+        case 15:
             return 'F';
-    }
-
-    else if (base === 'dec') {
-        strUpper = str.toUpperCase();
-        if (strUpper == 'A')
+        case 16:
+            return 'G';
+        case 17:
+            return 'H';
+        case 18:
+            return 'I';
+        case 19:
+            return 'J';
+        case 20:
+            return 'K';
+        case 'A':
             return 10;
-        if (strUpper == 'B')
+        case 'B':
             return 11;
-        if (strUpper == 'C')
+        case 'C':
             return 12;
-        if (strUpper == 'D')
+        case 'D':
             return 13;
-        if (strUpper == 'E')
+        case 'E':
             return 14;
-        if (strUpper == 'F')
+        case 'F':
             return 15;
-    }
-}
-
-function converter() {
-    let selectBases = document.getElementById('select-bases');
-    let optionValue = selectBases.options[selectBases.selectedIndex].value;
-    let unconverted = document.getElementById('textarea-origin').value;
-    let numericBases = optionValue.split('-');
-
-    let origin = numericBases[0];
-    let destiny = numericBases[1];
-
-    if (origin == 10) {
-        document.getElementById('textarea-destiny').value = (dec_to(unconverted, destiny));
-    }
-
-    else if (destiny == 10) {
-        document.getElementById('textarea-destiny').value = (to_dec(unconverted, origin));
-    }
-
-    else if (origin == 2) {
-        document.getElementById('textarea-destiny').value = (bin_to(unconverted, destiny));
-    }
-
-    else if (destiny == 2) {
-        document.getElementById('textarea-destiny').value = (to_bin(unconverted, origin));
-    }
-
-    else if (origin == 8) {
-        document.getElementById('textarea-destiny').value = oct_to(unconverted, destiny);
-    }
-
-    else if (origin == 16) {
-        document.getElementById('textarea-destiny').value = hex_to(unconverted, destiny);
+        case 'G':
+            return 16;
+        case 'H':
+            return 17;
+        case 'I':
+            return 18;
+        case 'J':
+            return 19;
+        case 'K':
+            return 20;
+        default:
+            return '';
     }
 }
 
@@ -162,3 +126,4 @@ function clean() {
     document.getElementById('textarea-origin').value = '';
     document.getElementById('textarea-destiny').value = '';
 }
+
