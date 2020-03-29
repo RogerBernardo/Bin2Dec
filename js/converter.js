@@ -12,18 +12,21 @@ function dec_to(str, destiny) {
     if (number == 0)
         return 0;
 
+    if (destiny <= 0 || destiny >= 21)
+        return;
+
     while (number > 0) {
         converted.push(number % destiny);
         number = parseInt(number / destiny);
     }
 
     switch (destiny) {
-        case 8:
         case 2:
+        case 8:
         case 10:
             convertedFilter = converted.reverse().toString().replace(/,/g, '');
             return convertedFilter;
-        case 16:
+        default:
             for (let i = 0; i < converted.length; i++)
                 converted[i] = translate(converted[i]);
             convertedFilter = converted.reverse().toString().replace(/,/g, '');
@@ -38,6 +41,12 @@ function to_dec(str, origin) {
 
     originalNumber.reverse();
 
+    if (origin <= 0 || origin >= 21)
+        return;
+
+    if (strNumber == '' || strNumber == null)
+        return;
+
     switch (origin) {
         case 2:
         case 8:
@@ -46,7 +55,7 @@ function to_dec(str, origin) {
                 convertedNumber += Math.pow(origin, i) * originalNumber[i];
             return convertedNumber;
 
-        case 16:
+        default:
             for (let i = 0; i < originalNumber.length; i++) {
                 if (Number.isInteger(originalNumber[i] * 1))
                     convertedNumber += Math.pow(origin, i) * (originalNumber[i]);
@@ -68,7 +77,14 @@ function converter(number, origin, destiny) {
     }
 }
 
-function translate(str) {
+function translate(number) {
+    let str;
+    if (Number.isInteger(str))
+        str = number
+
+    else
+        str = number.toString().toUpperCase();
+
     if (str >= 0 && str <= 9)
         return str;
 
@@ -123,7 +139,25 @@ function translate(str) {
 }
 
 function clean() {
-    document.getElementById('textarea-origin').value = '';
-    document.getElementById('textarea-destiny').value = '';
+    document.getElementById('number_origin').value = '';
+    document.getElementById('number_destiny').value = '';
 }
 
+
+function converterHandler() {
+    let origin = document.getElementById('base_origin').value;
+    let destiny = document.getElementById('base_destiny').value;
+    let numberOrigin = document.getElementById('number_origin').value;
+
+    if (origin <= 1 || origin >= 21)
+        return;
+
+    if (destiny <= 1 || destiny >= 21)
+        return;
+
+    if (numberOrigin == '' || numberOrigin == null)
+        return;
+
+    let value_destiny = converter(numberOrigin, origin, destiny);
+    document.getElementById('number_destiny').value = value_destiny;
+}
