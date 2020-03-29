@@ -7,6 +7,7 @@
     <meta name="author" content="Roger Bernardo de Melo Lima">
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="assets/bootstrap4/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/fontawesome-free-5.13.0-web/css/all.min.css" />
 
     <title>Bin2Dec</title>
 </head>
@@ -14,11 +15,14 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand" href="index.html"> Bin2Dec </a>
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/img/icons/binary-code.svg" class="nav-icon" />
+                Bin2Dec
+            </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
                 aria-controls="navbarToggler" aria-expanded="false" aria-label="Alterna navegação">
-                <img src="assets/img/icons/menu.svg" />
+                <i class="fas fa-bars"></i>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarToggler">
@@ -36,16 +40,16 @@
 
     <main class="bg-operation">
         <section>
-            <h1>Operações matemáticas com bases numéricas</h1>
+            
         </section>
     </main>
 
     <footer>
         <div class="row no-gutters">
-            <div class="col-md-6">
-                <p>Desenvolvido por Roger Bernardo de Melo Lima</p>
+            <div class="col-md-6 col-div-1">
+                <p>Desenvolvido por <a href="https://br.linkedin.com/in/rbmelolima">Roger Bernardo de Melo Lima</a></p>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 col-div-2">
                 <p>Confira este projeto no <a href="https://github.com/rbmelolima/Bin2Dec">Github</a></p>
             </div>
         </div>
@@ -54,6 +58,7 @@
     <script src="assets/jquery-3.4.1.min.js"></script>
     <script src="assets/popper.min.js"></script>
     <script src="assets/bootstrap4/js/bootstrap.min.js"></script>
+    <script src="assets/fontawesome-free-5.13.0-web/js/all.min.js"></script>
     <script src="js/converter.js"></script>
 </body>
 

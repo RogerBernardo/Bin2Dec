@@ -1,9 +1,3 @@
-/*
-Próxima implementação:
-Permitir mais de um valor no mesmo campo
-    Exemplo:    1001101 1010101 1011101 
-                ABCD 1342D FADF 
-*/
 function dec_to(str, destiny) {
     let converted = [];
     let convertedFilter;
@@ -27,8 +21,9 @@ function dec_to(str, destiny) {
             convertedFilter = converted.reverse().toString().replace(/,/g, '');
             return convertedFilter;
         default:
-            for (let i = 0; i < converted.length; i++)
+            for (let i = 0; i < converted.length; i++) {
                 converted[i] = translate(converted[i]);
+            }
             convertedFilter = converted.reverse().toString().replace(/,/g, '');
             return convertedFilter;
     }
@@ -70,7 +65,6 @@ function converter(number, origin, destiny) {
     if (origin == 10)
         return dec_to(number, destiny);
 
-
     else {
         let numberInDec = to_dec(number, origin);
         return dec_to(numberInDec, destiny);
@@ -79,8 +73,9 @@ function converter(number, origin, destiny) {
 
 function translate(number) {
     let str;
-    if (Number.isInteger(str))
-        str = number
+
+    if (Number.isInteger(parseInt(number)))
+        str = number;
 
     else
         str = number.toString().toUpperCase();
@@ -111,6 +106,8 @@ function translate(number) {
             return 'J';
         case 20:
             return 'K';
+        case 21:
+            return 'L';
         case 'A':
             return 10;
         case 'B':
@@ -133,6 +130,8 @@ function translate(number) {
             return 19;
         case 'K':
             return 20;
+        case 'L':
+            return 21;
         default:
             return '';
     }
@@ -160,4 +159,38 @@ function converterHandler() {
 
     let value_destiny = converter(numberOrigin, origin, destiny);
     document.getElementById('number_destiny').value = value_destiny;
+}
+
+
+function operations(number1, base1, number2, base2, operator) {
+    if (base1 != base2)
+        return;
+
+    let number1InDec = parseInt(converter(number1, base1, 10));
+    let number2InDec = parseInt(converter(number2, base2, 10));
+    let result;
+
+    switch (operator) {
+        case '+':
+            result = number1InDec + number2InDec;
+            return converter(result, 10, base1);
+
+        case '*':
+            result = number1InDec * number2InDec;
+            return converter(result, 10, base1);
+
+        case '-':
+            result = number1InDec - number2InDec;
+            return converter(result, 10, base1);
+
+        case '/':
+            if (number2InDec != 0) {
+                result = parseInt(number1InDec / number2InDec);
+                return converter(result, 10, base1);
+            }
+            break;
+
+        default:
+            return;
+    }
 }

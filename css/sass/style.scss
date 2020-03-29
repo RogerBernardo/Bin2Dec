@@ -23,8 +23,6 @@ $cinza-tom-1: #8c8c8c;
 $cinza-tom-2: #a6a6a6;
 $cinza-tom-3: #d9d9d9;
 
-$gold: #ffd700;
-
 /*
 *
 *
@@ -33,9 +31,12 @@ $gold: #ffd700;
 */
 main {
   min-height: 100vh;
+  background-color: $branco;
+}
+
+.main_ {
   padding-top: 50px;
   padding-bottom: 50px;
-  background-color: $branco;
 }
 
 a,
@@ -46,7 +47,7 @@ a:hover {
   color: inherit !important;
 }
 
-button{
+button {
   transition: all 1s ease-in-out;
 }
 
@@ -86,11 +87,32 @@ section {
 
 footer {
   background-color: $cinza-tom-3;
-  padding: 15px;
+  padding: 15px 25px;
+  font-weight: lighter;
 
   p {
     margin: 0;
     padding: 0;
+  }
+
+  .col-div-1 {
+    text-align: start;
+  }
+
+  .col-div-2 {
+    text-align: end;
+  }
+
+  @media screen and (max-width: 768px) {
+    .col-div-1,
+    .col-div-2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  }
+
+  a {
+    font-weight: bold;
   }
 }
 
@@ -127,14 +149,27 @@ footer {
   padding: 10px 15px;
   margin-left: 5px;
   margin-right: 5px;
+  outline: none;
+  border: 1px solid transparent;
 }
 
 .btn_reset {
+  background-color: $cinza-tom-3;
+
+  img {
+    height: 20px;
+  }
 }
 
-.btn_conversor {
-}
+.btn_converter {
+  background-color: #fff;
 
+  &:hover {
+    background-color: transparent;
+    border-color: #fff;
+    color: #fff;
+  }
+}
 /*
 *
 *
@@ -163,29 +198,30 @@ nav.navbar {
 nav button,
 nav button:focus {
   outline: none;
-  border: none;
-  color: #fff;
+  border: none;  
 }
 
 .navbar-toggler {
-  img {
-    color: #fff;
+  i.fas {
+    color: #212121;
     height: 30px;
   }
 }
 
-.navbar-brand,
-.nav-link {
-  color: #fff;
+.navbar-brand {
+  .nav-icon {
+    height: 30px;
+    margin-right: 5px;
+  }
+}
+
+.nav-link{
+  margin-right: 10px;
 }
 
 .navbar-brand:hover,
 .nav-link:hover {
-  color: $gold !important;
-}
-
-.nav-icon {
-  height: 1.6em;
+  color: $cinza-tom-1 !important;
 }
 
 /*
