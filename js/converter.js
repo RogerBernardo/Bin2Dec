@@ -1,3 +1,5 @@
+const maiorBase = 21;
+
 function dec_to(str, destiny) {
     let converted = [];
     let convertedFilter;
@@ -6,7 +8,7 @@ function dec_to(str, destiny) {
     if (number == 0)
         return 0;
 
-    if (destiny <= 0 || destiny >= 21)
+    if (destiny <= 0 || destiny > maiorBase)
         return;
 
     while (number > 0) {
@@ -36,7 +38,7 @@ function to_dec(str, origin) {
 
     originalNumber.reverse();
 
-    if (origin <= 0 || origin >= 21)
+    if (origin <= 0 || origin > maiorBase)
         return;
 
     if (strNumber == '' || strNumber == null)
@@ -148,10 +150,10 @@ function converterHandler() {
     let destiny = document.getElementById('base_destiny').value;
     let numberOrigin = document.getElementById('number_origin').value;
 
-    if (origin <= 1 || origin >= 21)
+    if (origin <= 1 || origin > maiorBase)
         return;
 
-    if (destiny <= 1 || destiny >= 21)
+    if (destiny <= 1 || destiny > maiorBase)
         return;
 
     if (numberOrigin == '' || numberOrigin == null)
