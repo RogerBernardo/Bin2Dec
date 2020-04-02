@@ -38,10 +38,132 @@
         </nav>
     </header>
 
-    <main class="bg-operation">
-        <section>
-            
-        </section>
+    <main class="align-middle-center">
+        <div class="calculator">
+            <div class="calculator_visor">
+                <span id="calc_visor_expressions"></span>
+                <span id="calc_visor_result"></span>
+            </div>
+            <div class="calculator_controls">
+                <div class="row no-gutters">
+                    <div class="col-3">
+                        <!-- Limpar campos -->
+                        <button onclick="cleanVisor()" class="calc_button calc_operator">
+                            <i class="fas fa-redo-alt"></i>
+                        </button>
+                    </div>
+                    <div class="col-3">
+                        <!-- Apagar último dígito -->
+                        <button onclick="removeLastParticle()" class="calc_button calc_operator">
+                            <i class="fas fa-backspace"></i>
+                        </button>
+                    </div>
+                    <div class="col-3">
+                        <!-- Alternar entre números e letras -->
+                        <button onclick="changeNumberToLetter()" class="calc_button calc_operator">
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
+                    </div>
+                    <div class="col-3">
+                        <!-- Soma -->
+                        <button onclick="addToVisor('+')" class="calc_button calc_operator">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row no-gutters">
+                    <div class="col-3">
+                        <button class="calc_button calc_number" id="calc_number_7" onclick="addToVisor(this.name)" name="7">
+                            7
+                        </button>
+                    </div>
+                    <div class="col-3">
+                        <button class="calc_button calc_number" id="calc_number_8" onclick="addToVisor(this.name)" name="8">
+                            8
+                        </button>
+                    </div>
+                    <div class="col-3">
+                        <button class="calc_button calc_number" id="calc_number_9" onclick="addToVisor(this.name)" name="9">
+                            9
+                        </button>
+                    </div>
+                    <div class="col-3">
+                        <!-- Multiplicação -->
+                        <button onclick="addToVisor('*')" class="calc_button calc_operator">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row no-gutters">
+                    <div class="col-3">
+                        <button class="calc_button calc_number" id="calc_number_4" onclick="addToVisor(this.name)" name="4">
+                            4
+                        </button>
+                    </div>
+                    <div class="col-3">
+                        <button class="calc_button calc_number" id="calc_number_5" onclick="addToVisor(this.name)"
+                            name="5">
+                            5
+                        </button>
+                    </div>
+                    <div class="col-3">
+                        <button class="calc_button calc_number" id="calc_number_6" onclick="addToVisor(this.name)" name="6">
+                            6
+                        </button>
+                    </div>
+                    <div class="col-3">
+                        <!-- Subtração -->
+                        <button class="calc_button calc_operator" onclick="addToVisor('-')">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row no-gutters">
+                    <div class="col-3">
+                        <button class="calc_button calc_number" id="calc_number_1" onclick="addToVisor(this.name)" name="1">
+                            1
+                        </button>
+                    </div>
+                    <div class="col-3">
+                        <button class="calc_button calc_number" id="calc_number_2" onclick="addToVisor(this.name)" name="2">
+                            2
+                        </button>
+                    </div>
+                    <div class="col-3">
+                        <button class="calc_button calc_number" id="calc_number_3" onclick="addToVisor(this.name)" name="3">
+                            3
+                        </button>
+                    </div>
+                    <div class="col-3">
+                        <!-- Divisão -->
+                        <button onclick="addToVisor('/')" class="calc_button calc_operator">
+                            <i class="fas fa-divide"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row no-gutters">
+                    <div class="col-3">
+                        <button class="calc_button calc_number" id="calc_number_0" onclick="addToVisor(0)" name="0">
+                            0
+                        </button>
+                    </div>
+                    <div class="col-6 align-middle-center">
+                        <input type="number" name="calc_baseNumber" min="2" max="20" class="calc_base"
+                            placeholder="Base">
+                    </div>
+                    <div class="col-3">
+                        <!-- Igual -->
+                        <button onclick="" class="calc_button calc_operator">
+                            <i class="fas fa-equals"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
