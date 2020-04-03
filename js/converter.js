@@ -73,69 +73,112 @@ function converter(number, origin, destiny) {
     }
 }
 
-function translate(number) {
-    let str;
+function translate(number, operations = 'translateToHexadecimal') {
+    let str = Number.isInteger(parseInt(number)) ? number : number.toString().toUpperCase();
 
-    if (Number.isInteger(parseInt(number)))
-        str = number;
+    if (operations === 'translateToHexadecimal') {
+        if (str >= 0 && str <= 9)
+            return str;
 
-    else
-        str = number.toString().toUpperCase();
+        switch (str) {
+            case 10:
+                return 'A';
+            case 11:
+                return 'B';
+            case 12:
+                return 'C';
+            case 13:
+                return 'D';
+            case 14:
+                return 'E';
+            case 15:
+                return 'F';
+            case 16:
+                return 'G';
+            case 17:
+                return 'H';
+            case 18:
+                return 'I';
+            case 19:
+                return 'J';
+            case 20:
+                return 'K';
+            case 21:
+                return 'L';
+            case 'A':
+                return 10;
+            case 'B':
+                return 11;
+            case 'C':
+                return 12;
+            case 'D':
+                return 13;
+            case 'E':
+                return 14;
+            case 'F':
+                return 15;
+            case 'G':
+                return 16;
+            case 'H':
+                return 17;
+            case 'I':
+                return 18;
+            case 'J':
+                return 19;
+            case 'K':
+                return 20;
+            case 'L':
+                return 21;
+            default:
+                return '';
+        }
+    }
 
-    if (str >= 0 && str <= 9)
-        return str;
-
-    switch (str) {
-        case 10:
-            return 'A';
-        case 11:
-            return 'B';
-        case 12:
-            return 'C';
-        case 13:
-            return 'D';
-        case 14:
-            return 'E';
-        case 15:
-            return 'F';
-        case 16:
-            return 'G';
-        case 17:
-            return 'H';
-        case 18:
-            return 'I';
-        case 19:
-            return 'J';
-        case 20:
-            return 'K';
-        case 21:
-            return 'L';
-        case 'A':
-            return 10;
-        case 'B':
-            return 11;
-        case 'C':
-            return 12;
-        case 'D':
-            return 13;
-        case 'E':
-            return 14;
-        case 'F':
-            return 15;
-        case 'G':
-            return 16;
-        case 'H':
-            return 17;
-        case 'I':
-            return 18;
-        case 'J':
-            return 19;
-        case 'K':
-            return 20;
-        case 'L':
-            return 21;
-        default:
-            return '';
+    else {
+        switch (str) {
+            case 0:
+                return 'A';
+            case 01:
+                return 'B';
+            case 02:
+                return 'C';
+            case 03:
+                return 'D';
+            case 04:
+                return 'E';
+            case 05:
+                return 'F';
+            case 06:
+                return 'G';
+            case 07:
+                return 'H';
+            case 08:
+                return 'I';
+            case 09:
+                return 'J';
+            case 'A':
+                return 0;
+            case 'B':
+                return 1;
+            case 'C':
+                return 2;
+            case 'D':
+                return 3;
+            case 'E':
+                return 4;
+            case 'F':
+                return 5;
+            case 'G':
+                return 6;
+            case 'H':
+                return 7;
+            case 'I':
+                return 8;
+            case 'J':
+                return 9;
+            default:
+                return '';
+        }
     }
 }
 
@@ -144,6 +187,10 @@ function clean() {
     document.getElementById('number_destiny').value = '';
 }
 
+function cleanVisor() {
+    document.getElementById('calc_visor_expressions').innerHTML = '';
+    document.getElementById('calc_visor_result').innerHTML = '';
+}
 
 function converterHandler() {
     let origin = document.getElementById('base_origin').value;
@@ -162,7 +209,6 @@ function converterHandler() {
     let value_destiny = converter(numberOrigin, origin, destiny);
     document.getElementById('number_destiny').value = value_destiny;
 }
-
 
 function operations(number1, base1, number2, base2, operator) {
     if (base1 != base2)
@@ -197,96 +243,19 @@ function operations(number1, base1, number2, base2, operator) {
     }
 }
 
-let togglerCalc = 0;
 function changeNumberToLetter() {
-    let number_0 = document.getElementById('calc_number_0');
-    let number_1 = document.getElementById('calc_number_1');
-    let number_2 = document.getElementById('calc_number_2');
-    let number_3 = document.getElementById('calc_number_3');
-    let number_4 = document.getElementById('calc_number_4');
-    let number_5 = document.getElementById('calc_number_5');
-    let number_6 = document.getElementById('calc_number_6');
-    let number_7 = document.getElementById('calc_number_7');
-    let number_8 = document.getElementById('calc_number_8');
-    let number_9 = document.getElementById('calc_number_9');
+    let calc_buttons = document.getElementsByClassName('calc_number');
 
-
-    if (togglerCalc % 2 == 0) {
-        number_0.innerHTML = 'A';
-        number_0.setAttribute('name', 'A');
-
-        number_1.innerHTML = 'B';
-        number_1.setAttribute('name', 'B');
-
-
-        number_2.innerHTML = 'C';
-        number_2.setAttribute('name', 'C');
-
-        number_3.innerHTML = 'D';
-        number_3.setAttribute('name', 'D');
-
-        number_4.innerHTML = 'E';
-        number_4.setAttribute('name', 'E');
-
-        number_5.innerHTML = 'F';
-        number_5.setAttribute('name', 'F');
-
-        number_6.innerHTML = 'G';
-        number_6.setAttribute('name', 'G');
-
-        number_7.innerHTML = 'H';
-        number_7.setAttribute('name', 'H');
-
-        number_8.innerHTML = 'I';
-        number_8.setAttribute('name', 'I');
-
-        number_9.innerHTML = 'J';
-        number_9.setAttribute('name', 'J');
+    for (let i = 0; i < calc_buttons.length; i++) {
+        let text = calc_buttons[i].name;
+        let number = Number.isInteger(parseInt(text)) ? parseInt(text) : text;
+        calc_buttons[i].innerHTML = translate(number, 'calculator');
+        calc_buttons[i].setAttribute('name', translate(number, 'calculator'));
     }
-
-    else {
-        number_0.innerHTML = '0';
-        number_0.setAttribute('name', '0');
-
-        number_1.innerHTML = '1';
-        number_1.setAttribute('name', '1');
-
-        number_2.innerHTML = '2';
-        number_2.setAttribute('name', '2');
-
-        number_3.innerHTML = '3';
-        number_3.setAttribute('name', '3');
-
-        number_4.innerHTML = '4';
-        number_4.setAttribute('name', '4');
-
-        number_5.innerHTML = '5';
-        number_5.setAttribute('name', '5');
-
-        number_6.innerHTML = '6';
-        number_6.setAttribute('name', '6');
-
-        number_7.innerHTML = '7';
-        number_7.setAttribute('name', '7');
-
-        number_8.innerHTML = '8';
-        number_8.setAttribute('name', '8');
-
-        number_9.innerHTML = '9';
-        number_9.setAttribute('name', '9');
-    }
-
-    togglerCalc++;
 }
 
 function addToVisor(particle) {
     document.getElementById('calc_visor_expressions').innerHTML += particle;
-    console.log(particle);
-}
-
-function cleanVisor() {
-    document.getElementById('calc_visor_expressions').innerHTML = '';
-    document.getElementById('calc_visor_result').innerHTML = '';
 }
 
 function removeLastParticle() {
