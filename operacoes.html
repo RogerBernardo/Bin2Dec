@@ -28,10 +28,16 @@
             <div class="collapse navbar-collapse" id="navbarToggler">
                 <ul class="navbar-nav ml-auto ">
                     <li class="nav-item">
-                        <a class="nav-link" href="conversor.html">Conversor</a>
+                        <a class="nav-link" href="conversor.html">
+                            <i class="fas fa-sort-numeric-up"></i>
+                            Conversor
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="operacoes.html">Calculadora</a>
+                        <a class="nav-link" href="operacoes.html">
+                            <i class="fas fa-calculator"></i>
+                            Calculadora
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -74,17 +80,20 @@
 
                 <div class="row no-gutters">
                     <div class="col-3">
-                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)" name="7">
+                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)"
+                            name="7">
                             7
                         </button>
                     </div>
                     <div class="col-3">
-                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)" name="8">
+                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)"
+                            name="8">
                             8
                         </button>
                     </div>
                     <div class="col-3">
-                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)" name="9">
+                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)"
+                            name="9">
                             9
                         </button>
                     </div>
@@ -98,7 +107,8 @@
 
                 <div class="row no-gutters">
                     <div class="col-3">
-                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)" name="4">
+                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)"
+                            name="4">
                             4
                         </button>
                     </div>
@@ -109,7 +119,8 @@
                         </button>
                     </div>
                     <div class="col-3">
-                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)" name="6">
+                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)"
+                            name="6">
                             6
                         </button>
                     </div>
@@ -123,17 +134,20 @@
 
                 <div class="row no-gutters">
                     <div class="col-3">
-                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)" name="1">
+                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)"
+                            name="1">
                             1
                         </button>
                     </div>
                     <div class="col-3">
-                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)" name="2">
+                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)"
+                            name="2">
                             2
                         </button>
                     </div>
                     <div class="col-3">
-                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)" name="3">
+                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)"
+                            name="3">
                             3
                         </button>
                     </div>
@@ -147,17 +161,17 @@
 
                 <div class="row no-gutters">
                     <div class="col-3">
-                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)" name="0">
+                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)"
+                            name="0">
                             0
                         </button>
                     </div>
                     <div class="col-6 align-middle-center">
-                        <input type="number" name="calc_baseNumber" min="2" max="20" class="calc_base"
-                            placeholder="Base">
+                        <input type="number" id="calc_baseNumber" min="2" max="20" class="calc_base" placeholder="Base">
                     </div>
                     <div class="col-3">
                         <!-- Igual -->
-                        <button onclick="" class="calc_button calc_operator">
+                        <button onclick="equals()" class="calc_button calc_operator">
                             <i class="fas fa-equals"></i>
                         </button>
                     </div>
@@ -167,6 +181,12 @@
     </main>
 
     <footer>
+        <div class="obs_footer">
+            <p>
+                Observações: A calculadora não funciona com números negativos, e muito menos com números quebrados.
+                <i class="far fa-grin-beam-sweat"></i>
+            </p>
+        </div>
         <div class="row no-gutters">
             <div class="col-md-6 col-div-1">
                 <p>Desenvolvido por <a href="https://br.linkedin.com/in/rbmelolima">Roger Bernardo de Melo Lima</a></p>

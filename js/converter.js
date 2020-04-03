@@ -1,4 +1,11 @@
+/*
+1. As operações matemáticas não funcionam com números negativos e números quebrados
+
+
+*/
+
 const maiorBase = 21;
+let calculatorOperator = '';
 
 function dec_to(str, destiny) {
     let converted = [];
@@ -256,10 +263,28 @@ function changeNumberToLetter() {
 
 function addToVisor(particle) {
     document.getElementById('calc_visor_expressions').innerHTML += particle;
+    if (particle == '+' || particle == '/' || particle == '*' || particle == '-') {
+        calculatorOperator = particle;
+    }
 }
 
 function removeLastParticle() {
     let expression = document.getElementById('calc_visor_expressions').innerHTML;
     cleanExpression = expression.substring(0, (expression.length - 1));
     document.getElementById('calc_visor_expressions').innerHTML = cleanExpression;
+}
+
+function equals() {
+    const base = document.getElementById('calc_baseNumber').value;
+
+    if (isNaN(base) || base === null || base === '') {
+        alert('Digite a base numérica da operação');
+        return;
+    }
+
+    let expressions = document.getElementById('calc_visor_expressions').innerHTML.split(calculatorOperator);
+
+    const result = operations(expressions[0], base, expressions[1], base, calculatorOperator);
+
+    document.getElementById('calc_visor_result').innerHTML = ' = ' + result;
 }

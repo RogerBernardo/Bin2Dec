@@ -47,10 +47,6 @@ a:hover {
   color: inherit !important;
 }
 
-button {
-  transition: all 1s ease-in-out;
-}
-
 p {
   line-height: 1.7em;
 }
@@ -151,6 +147,7 @@ footer {
   margin-right: 5px;
   outline: none;
   border: 1px solid transparent;
+  transition: all 1s ease-in-out;
 }
 
 .btn_reset {
@@ -193,6 +190,7 @@ footer {
 */
 nav.navbar {
   background-color: $cinza-tom-3;
+  font-weight: bold;
 }
 
 nav button,
@@ -360,6 +358,13 @@ $borderRadius: 15px;
   align-items: center;
 }
 
+.calc_visor_expressions,
+.calc_visor_result {
+  width: 100%;
+  display: block;
+  margin-bottom: 8px;
+}
+
 .calculator_controls {
   text-align: center;
   padding: 5px;
@@ -374,7 +379,7 @@ $borderRadius: 15px;
 }
 
 .calc_button {
-  transition: all 1s ease !important;
+  transition: all 1s ease;
   border-radius: 50px;
   border-radius: 50px;
   background: #d9d9d9;
@@ -398,4 +403,10 @@ $borderRadius: 15px;
   outline: none;
   border-bottom: 1px solid $cinza-tom-2;
   background-color: transparent;
+}
+
+.obs_footer{
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 20px;
 }
