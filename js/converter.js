@@ -202,14 +202,9 @@ function converterHandler() {
     let destiny = document.getElementById('base_destiny').value;
     let numberOrigin = document.getElementById('number_origin').value;
 
-    if(origin <= 1 || origin > maiorBase)
+    if((origin <= 1 || origin > maiorBase) || (destiny <= 1 || destiny > maiorBase) || (numberOrigin == '' || numberOrigin == null)) {
         return;
-
-    if(destiny <= 1 || destiny > maiorBase)
-        return;
-
-    if(numberOrigin == '' || numberOrigin == null)
-        return;
+    }
 
     let value_destiny = converter(numberOrigin, origin, destiny);
     document.getElementById('number_destiny').value = value_destiny;
@@ -265,7 +260,7 @@ function addToVisor(particle) {
     const validOperators = ['+', '-', '*', '/'];
 
     if(validOperators.includes(particle)) {
-        calculatorOperator = particle;        
+        calculatorOperator = particle;
     }
 }
 
