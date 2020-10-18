@@ -1,0 +1,32 @@
+* {
+  padding: 0;
+  margin: 0;
+  vertical-align: baseline;
+  list-style: none;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: #212121;
+}
+
+button {
+  padding: 24px 16px;
+  outline: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.button-primary {
+  background: #212121;
+  color: #fff;
+}
+
+.button-secundary {
+  background: transparent;
+  color: #000;
+}

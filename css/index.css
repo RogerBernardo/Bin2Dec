@@ -1,0 +1,52 @@
+#page-home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+#page-home main {
+  display: flex;
+  align-items: center;
+}
+
+#page-home a {
+  width: 240px;
+  height: 240px;
+  border-radius: 8px;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  text-decoration: none;
+
+  transition: background 0.4s ease-in;
+}
+
+#page-home a:hover {
+  background-color: #e7e7e7;
+}
+
+#page-home a:first-child {
+  margin-right: 16px;
+}
+
+#page-home a h2 {
+  margin-top: 16px;
+}
+
+@media (max-width: 660px) {
+  #page-home main {
+    flex-direction: column;
+  }
+
+  #page-home a:first-child {
+    margin-right: 0;
+    margin-bottom: 16px;
+  }
+}
