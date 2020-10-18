@@ -1,7 +1,5 @@
 /*
 1. As operações matemáticas não funcionam com números negativos e números quebrados
-
-
 */
 
 const maiorBase = 21;
@@ -12,25 +10,25 @@ function dec_to(str, destiny) {
     let convertedFilter;
     let number = parseInt(str);
 
-    if (number == 0)
+    if(number == 0)
         return 0;
 
-    if (destiny <= 0 || destiny > maiorBase)
+    if(destiny <= 0 || destiny > maiorBase)
         return;
 
-    while (number > 0) {
+    while(number > 0) {
         converted.push(number % destiny);
         number = parseInt(number / destiny);
     }
 
-    switch (destiny) {
+    switch(destiny) {
         case 2:
         case 8:
         case 10:
             convertedFilter = converted.reverse().toString().replace(/,/g, '');
             return convertedFilter;
         default:
-            for (let i = 0; i < converted.length; i++) {
+            for(let i = 0; i < converted.length; i++) {
                 converted[i] = translate(converted[i]);
             }
             convertedFilter = converted.reverse().toString().replace(/,/g, '');
@@ -45,23 +43,23 @@ function to_dec(str, origin) {
 
     originalNumber.reverse();
 
-    if (origin <= 0 || origin > maiorBase)
+    if(origin <= 0 || origin > maiorBase)
         return;
 
-    if (strNumber == '' || strNumber == null)
+    if(strNumber == '' || strNumber == null)
         return;
 
-    switch (origin) {
+    switch(origin) {
         case 2:
         case 8:
         case 10:
-            for (let i = 0; i < originalNumber.length; i++)
+            for(let i = 0; i < originalNumber.length; i++)
                 convertedNumber += Math.pow(origin, i) * originalNumber[i];
             return convertedNumber;
 
         default:
-            for (let i = 0; i < originalNumber.length; i++) {
-                if (Number.isInteger(originalNumber[i] * 1))
+            for(let i = 0; i < originalNumber.length; i++) {
+                if(Number.isInteger(originalNumber[i] * 1))
                     convertedNumber += Math.pow(origin, i) * (originalNumber[i]);
                 else
                     convertedNumber += Math.pow(origin, i) * (translate(originalNumber[i]));
@@ -71,7 +69,7 @@ function to_dec(str, origin) {
 }
 
 function converter(number, origin, destiny) {
-    if (origin == 10)
+    if(origin == 10)
         return dec_to(number, destiny);
 
     else {
@@ -83,11 +81,11 @@ function converter(number, origin, destiny) {
 function translate(number, operations = 'translateToHexadecimal') {
     let str = Number.isInteger(parseInt(number)) ? number : number.toString().toUpperCase();
 
-    if (operations === 'translateToHexadecimal') {
-        if (str >= 0 && str <= 9)
+    if(operations === 'translateToHexadecimal') {
+        if(str >= 0 && str <= 9)
             return str;
 
-        switch (str) {
+        switch(str) {
             case 10:
                 return 'A';
             case 11:
@@ -142,7 +140,7 @@ function translate(number, operations = 'translateToHexadecimal') {
     }
 
     else {
-        switch (str) {
+        switch(str) {
             case 0:
                 return 'A';
             case 01:
@@ -204,13 +202,13 @@ function converterHandler() {
     let destiny = document.getElementById('base_destiny').value;
     let numberOrigin = document.getElementById('number_origin').value;
 
-    if (origin <= 1 || origin > maiorBase)
+    if(origin <= 1 || origin > maiorBase)
         return;
 
-    if (destiny <= 1 || destiny > maiorBase)
+    if(destiny <= 1 || destiny > maiorBase)
         return;
 
-    if (numberOrigin == '' || numberOrigin == null)
+    if(numberOrigin == '' || numberOrigin == null)
         return;
 
     let value_destiny = converter(numberOrigin, origin, destiny);
@@ -218,14 +216,14 @@ function converterHandler() {
 }
 
 function operations(number1, base1, number2, base2, operator) {
-    if (base1 != base2)
+    if(base1 != base2)
         return;
 
     let number1InDec = parseInt(converter(number1, base1, 10));
     let number2InDec = parseInt(converter(number2, base2, 10));
     let result;
 
-    switch (operator) {
+    switch(operator) {
         case '+':
             result = number1InDec + number2InDec;
             return converter(result, 10, base1);
@@ -239,7 +237,7 @@ function operations(number1, base1, number2, base2, operator) {
             return converter(result, 10, base1);
 
         case '/':
-            if (number2InDec != 0) {
+            if(number2InDec != 0) {
                 result = parseInt(number1InDec / number2InDec);
                 return converter(result, 10, base1);
             }
@@ -253,7 +251,7 @@ function operations(number1, base1, number2, base2, operator) {
 function changeNumberToLetter() {
     let calc_buttons = document.getElementsByClassName('calc_number');
 
-    for (let i = 0; i < calc_buttons.length; i++) {
+    for(let i = 0; i < calc_buttons.length; i++) {
         let text = calc_buttons[i].name;
         let number = Number.isInteger(parseInt(text)) ? parseInt(text) : text;
         calc_buttons[i].innerHTML = translate(number, 'calculator');
@@ -262,9 +260,12 @@ function changeNumberToLetter() {
 }
 
 function addToVisor(particle) {
-    document.getElementById('calc_visor_expressions').innerHTML += particle;
-    if (particle == '+' || particle == '/' || particle == '*' || particle == '-') {
-        calculatorOperator = particle;
+    document.getElementById('calc_visor_expressions').innerHTML += (particle);
+
+    const validOperators = ['+', '-', '*', '/'];
+
+    if(validOperators.includes(particle)) {
+        calculatorOperator = particle;        
     }
 }
 
@@ -277,7 +278,7 @@ function removeLastParticle() {
 function equals() {
     const base = document.getElementById('calc_baseNumber').value;
 
-    if (isNaN(base) || base === null || base === '') {
+    if(isNaN(base) || base === null || base === '') {
         alert('Digite a base numérica da operação');
         return;
     }
