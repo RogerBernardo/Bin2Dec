@@ -8,6 +8,7 @@
 #page-home main {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 #page-home a {

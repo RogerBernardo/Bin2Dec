@@ -2,200 +2,196 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="Roger Bernardo de Melo Lima">
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="assets/bootstrap4/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/fontawesome-free-5.13.0-web/css/all.min.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Roger Bernardo de Melo Lima">
+  <link rel="stylesheet" href="css/style.css" />
 
-    <title>Bin2Dec</title>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+
+  <title>Bin2Dec</title>
 </head>
 
 <body>
-    <header>
-        <nav class="nav-header">          
-            <a class="nav-brand">
-                <img src="assets/img/icons/binary-code.svg" class="nav-icon" />
-                Bin2Dec
-            </a>
+  <nav class="navigation">
+    <a href="index.html">Início</a>
+    <a href="operacoes.html">Operações</a>
+    <a href="conversor.html">Conversor</a>
+  </nav>
 
-            <ul class="nav-links">
-                <li class="nav-item">
-                    <a class="nav-link" href="conversor.html">
-                        <i class="fas fa-sort-numeric-up"></i>
-                        <span class="nav-item-rotule">Conversor</span>
-                    </a>
-                </li>
+  <header>
+    <nav class="nav-header">
+      <a class="nav-brand">
+        <img src="assets/img/icons/binary-code.svg" class="nav-icon" />
+        Bin2Dec
+      </a>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="operacoes.html">
-                        <i class="fas fa-calculator"></i>
-                        <span class="nav-item-rotule">Calculadora</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+      <ul class="nav-links">
+        <li class="nav-item">
+          <a class="nav-link" href="conversor.html">
+            <i class="fas fa-sort-numeric-up"></i>
+            <span class="nav-item-rotule">Conversor</span>
+          </a>
+        </li>
 
-    <main class="align-middle-center">
-        <div class="calculator">
-            <div class="calculator_visor">
-                <span id="calc_visor_expressions"></span>
-                <span id="calc_visor_result"></span>
-            </div>
-            <div class="calculator_controls">
-                <div class="row no-gutters">
-                    <div class="col-3">
-                        <!-- Limpar campos -->
-                        <button onclick="cleanVisor()" class="calc_button calc_operator">
-                            <i class="fas fa-redo-alt"></i>
-                        </button>
-                    </div>
-                    <div class="col-3">
-                        <!-- Apagar último dígito -->
-                        <button onclick="removeLastParticle()" class="calc_button calc_operator">
-                            <i class="fas fa-backspace"></i>
-                        </button>
-                    </div>
-                    <div class="col-3">
-                        <!-- Alternar entre números e letras -->
-                        <button onclick="changeNumberToLetter()" class="calc_button calc_operator">
-                            <i class="fas fa-exchange-alt"></i>
-                        </button>
-                    </div>
-                    <div class="col-3">
-                        <!-- Soma -->
-                        <button onclick="addToVisor('+')" class="calc_button calc_operator">
-                            <i class="fas fa-plus"></i>
-                        </button>
-                    </div>
-                </div>
+        <li class="nav-item">
+          <a class="nav-link" href="operacoes.html">
+            <i class="fas fa-calculator"></i>
+            <span class="nav-item-rotule">Calculadora</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-                <div class="row no-gutters">
-                    <div class="col-3">
-                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)"
-                            name="7">
-                            7
-                        </button>
-                    </div>
-                    <div class="col-3">
-                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)"
-                            name="8">
-                            8
-                        </button>
-                    </div>
-                    <div class="col-3">
-                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)"
-                            name="9">
-                            9
-                        </button>
-                    </div>
-                    <div class="col-3">
-                        <!-- Multiplicação -->
-                        <button onclick="addToVisor('*')" class="calc_button calc_operator">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="row no-gutters">
-                    <div class="col-3">
-                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)"
-                            name="4">
-                            4
-                        </button>
-                    </div>
-                    <div class="col-3">
-                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)"
-                            name="5">
-                            5
-                        </button>
-                    </div>
-                    <div class="col-3">
-                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)"
-                            name="6">
-                            6
-                        </button>
-                    </div>
-                    <div class="col-3">
-                        <!-- Subtração -->
-                        <button class="calc_button calc_operator" onclick="addToVisor('-')">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="row no-gutters">
-                    <div class="col-3">
-                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)"
-                            name="1">
-                            1
-                        </button>
-                    </div>
-                    <div class="col-3">
-                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)"
-                            name="2">
-                            2
-                        </button>
-                    </div>
-                    <div class="col-3">
-                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)"
-                            name="3">
-                            3
-                        </button>
-                    </div>
-                    <div class="col-3">
-                        <!-- Divisão -->
-                        <button onclick="addToVisor('/')" class="calc_button calc_operator">
-                            <i class="fas fa-divide"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="row no-gutters">
-                    <div class="col-3">
-                        <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)"
-                            name="0">
-                            0
-                        </button>
-                    </div>
-                    <div class="col-6 align-middle-center">
-                        <input type="number" id="calc_baseNumber" min="2" max="20" class="calc_base" placeholder="Base">
-                    </div>
-                    <div class="col-3">
-                        <!-- Igual -->
-                        <button onclick="equals()" class="calc_button calc_operator">
-                            <i class="fas fa-equals"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <div class="obs_footer">
-            <p>
-                Observações: A calculadora não funciona com números negativos, e muito menos com números quebrados.
-                <i class="far fa-grin-beam-sweat"></i>
-            </p>
-        </div>
+  <main class="align-middle-center">
+    <div class="calculator">
+      <div class="calculator_visor">
+        <span id="calc_visor_expressions"></span>
+        <span id="calc_visor_result"></span>
+      </div>
+      <div class="calculator_controls">
         <div class="row no-gutters">
-            <div class="col-md-6 col-div-1">
-                <p>Desenvolvido por <a href="https://br.linkedin.com/in/rbmelolima">Roger Bernardo de Melo Lima</a></p>
-            </div>
-            <div class="col-md-6 col-div-2">
-                <p>Confira este projeto no <a href="https://github.com/rbmelolima/Bin2Dec">Github</a></p>
-            </div>
+          <div class="col-3">
+            <!-- Limpar campos -->
+            <button onclick="cleanVisor()" class="calc_button calc_operator">
+              <i class="fas fa-redo-alt"></i>
+            </button>
+          </div>
+          <div class="col-3">
+            <!-- Apagar último dígito -->
+            <button onclick="removeLastParticle()" class="calc_button calc_operator">
+              <i class="fas fa-backspace"></i>
+            </button>
+          </div>
+          <div class="col-3">
+            <!-- Alternar entre números e letras -->
+            <button onclick="changeNumberToLetter()" class="calc_button calc_operator">
+              <i class="fas fa-exchange-alt"></i>
+            </button>
+          </div>
+          <div class="col-3">
+            <!-- Soma -->
+            <button onclick="addToVisor('+')" class="calc_button calc_operator">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
         </div>
-    </footer>
 
-    <script src="assets/jquery-3.4.1.min.js"></script>
-    <script src="assets/popper.min.js"></script>
-    <script src="assets/bootstrap4/js/bootstrap.min.js"></script>
-    <script src="assets/fontawesome-free-5.13.0-web/js/all.min.js"></script>
-    <script src="js/converter.js"></script>
+        <div class="row no-gutters">
+          <div class="col-3">
+            <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)" name="7">
+              7
+            </button>
+          </div>
+          <div class="col-3">
+            <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)" name="8">
+              8
+            </button>
+          </div>
+          <div class="col-3">
+            <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)" name="9">
+              9
+            </button>
+          </div>
+          <div class="col-3">
+            <!-- Multiplicação -->
+            <button onclick="addToVisor('*')" class="calc_button calc_operator">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="row no-gutters">
+          <div class="col-3">
+            <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)" name="4">
+              4
+            </button>
+          </div>
+          <div class="col-3">
+            <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)" name="5">
+              5
+            </button>
+          </div>
+          <div class="col-3">
+            <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)" name="6">
+              6
+            </button>
+          </div>
+          <div class="col-3">
+            <!-- Subtração -->
+            <button class="calc_button calc_operator" onclick="addToVisor('-')">
+              <i class="fas fa-minus"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="row no-gutters">
+          <div class="col-3">
+            <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)" name="1">
+              1
+            </button>
+          </div>
+          <div class="col-3">
+            <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)" name="2">
+              2
+            </button>
+          </div>
+          <div class="col-3">
+            <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)" name="3">
+              3
+            </button>
+          </div>
+          <div class="col-3">
+            <!-- Divisão -->
+            <button onclick="addToVisor('/')" class="calc_button calc_operator">
+              <i class="fas fa-divide"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="row no-gutters">
+          <div class="col-3">
+            <button class="calc_button calc_number" id="calc_number" onclick="addToVisor(this.name)" name="0">
+              0
+            </button>
+          </div>
+          <div class="col-6 align-middle-center">
+            <input type="number" id="calc_baseNumber" min="2" max="20" class="calc_base" placeholder="Base">
+          </div>
+          <div class="col-3">
+            <!-- Igual -->
+            <button onclick="equals()" class="calc_button calc_operator">
+              <i class="fas fa-equals"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="obs_footer">
+      <p>
+        Observações: A calculadora não funciona com números negativos, e muito menos com números quebrados.
+        <i class="far fa-grin-beam-sweat"></i>
+      </p>
+    </div>
+    <div class="row no-gutters">
+      <div class="col-md-6 col-div-1">
+        <p>Desenvolvido por <a href="https://br.linkedin.com/in/rbmelolima">Roger Bernardo de Melo Lima</a></p>
+      </div>
+      <div class="col-md-6 col-div-2">
+        <p>Confira este projeto no <a href="https://github.com/rbmelolima/Bin2Dec">Github</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/jquery-3.4.1.min.js"></script>
+  <script src="assets/popper.min.js"></script>
+  <script src="assets/bootstrap4/js/bootstrap.min.js"></script>
+  <script src="assets/fontawesome-free-5.13.0-web/js/all.min.js"></script>
+  <script src="js/converter.js"></script>
 </body>
 
 </html>

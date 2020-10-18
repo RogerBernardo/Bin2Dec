@@ -7,18 +7,28 @@
   box-sizing: border-box;
 }
 
+*,
+button,
+input {
+  font-family: "Ubuntu", sans-serif;
+}
+
 body {
   width: 100vw;
   height: 100vh;
   background: #212121;
+
+  position: relative;
 }
 
 button {
-  padding: 24px 16px;
+  padding: 16px;
   outline: none;
   text-transform: uppercase;
   font-size: 14px;
   font-weight: bold;
+
+  cursor: pointer;
 }
 
 .button-primary {
@@ -29,4 +39,81 @@ button {
 .button-secundary {
   background: transparent;
   color: #000;
+}
+
+.input-container {
+  width: 100%;
+  margin-bottom: 16px;
+
+  display: flex;
+}
+
+.input-container input {
+  background: #fafafa;
+  border: 2px solid #f2f2f2;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 16px;
+  font-size: 14px;
+  outline: none;
+  transition: 0.4s border ease-in-out;
+}
+
+.input-container input:focus {
+  border-color: #000;
+}
+
+.input-container input:first-child {
+  width: 20%;
+  min-width: 30px;
+  margin-right: 8px;
+}
+
+.input-container input:last-child {
+  width: 80%;
+}
+
+.input-container input:read-only {
+  background-color: #ebebeb;
+  border: 2px solid #ebebeb;
+}
+
+@media (max-width: 420px) {
+  .input-container {   
+    margin-bottom: 24px;
+
+    display: block;
+  }
+
+  .input-container input:first-child {
+    width: 100%;
+    min-width: 100%;
+    margin-right: 0;
+    margin-bottom: 12px;
+  }
+
+  .input-container input:last-child {
+    width: 100%;    
+  }
+}
+
+.navigation {
+  position: absolute;
+  width: 100%;
+  padding: 16px;
+
+  display: flex;
+  justify-content: flex-end;
+
+  top: 0;
+  left: 0;
+}
+
+.navigation a {
+  color: #fff;
+}
+
+.navigation a:nth-child(2) {
+  margin-left: 16px;
+  margin-right: 16px;
 }

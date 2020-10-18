@@ -2,129 +2,51 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="Roger Bernardo de Melo Lima">
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="assets/bootstrap4/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/fontawesome-free-5.13.0-web/css/all.min.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Roger Bernardo de Melo Lima">
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/conversor.css" />
 
-    <title>Bin2Dec</title>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+
+  <title>Bin2Dec</title>
 </head>
 
-<body>
-    <header>
-        <nav class="nav-header">
-            <a class="nav-brand">
-                <img src="assets/img/icons/binary-code.svg" class="nav-icon" />
-                Bin2Dec
-            </a>
+<body id="page-conversor">
+  <nav class="navigation">
+    <a href="index.html">Início</a>
+    <a href="operacoes.html">Operações</a>
+    <a href="conversor.html">Conversor</a>
+  </nav>
 
-            <ul class="nav-links">
-                <li class="nav-item">
-                    <a class="nav-link" href="conversor.html">
-                        <i class="fas fa-sort-numeric-up"></i>
-                        <span class="nav-item-rotule">Conversor</span>
-                    </a>
-                </li>
+  <main>
+    <h1>Conversor de bases</h1>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="operacoes.html">
-                        <i class="fas fa-calculator"></i>
-                        <span class="nav-item-rotule">Calculadora</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <div class="input-container">
+      <input type="number" min="2" max="21" id="base_origin" placeholder="Base" />
 
-    <main class="main_ align-middle-center">
-        <section class="container_conversor">
-            <h1>Conversor de bases numéricas</h1>
+      <input type="text" id="number_origin" placeholder="Número a ser convertido" />
+    </div>
 
-            <div class="row no-gutters">
-                <div class="col-2 pr-3">
-                    <input type="number" min="2" max="21" id="base_origin" class="full-width conversor_input_number"
-                        placeholder="Base" />
-                </div>
+    <div class="input-container">
+      <input type="number" min="2" max="21" id="base_destiny" placeholder="Base" />
 
-                <div class="col-10">
-                    <input type="text" id="number_origin" class="full-width conversor_input_text"
-                        placeholder="Número a ser convertido" />
-                </div>
-            </div>
+      <input type="text" id="number_destiny" placeholder="Número convertido" readonly />
+    </div>
 
-            <div class="row no-gutters">
-                <div class="col-2 pr-3">
-                    <input type="number" min="2" max="21" id="base_destiny" class="full-width conversor_input_number"
-                        placeholder="Base" />
-                </div>
+    <div class="group-button">
+      <button class="button-secundary" onclick="clean()">
+        Cancelar
+      </button>
 
-                <div class="col-10">
-                    <input type="text" id="number_destiny" class="full-width conversor_input_text"
-                        placeholder="Número convertido" readonly />
-                </div>
-            </div>
+      <button class="button-primary" onclick="converterHandler()">
+        Converter
+      </button>
+    </div>
+  </main>
 
-            <div class="row align-center">
-                <button class="btn_ btn_reset" onclick="clean()"> <img src="assets/img/icons/replay.svg" /> </button>
-                <button class="btn_ btn_converter" onclick="converterHandler()"> Converter </button>
-            </div>
-
-            <div class="container_scrool_converter">
-                <h3>O que são bases numéricas?</h3>
-                <p>
-                    A base de um sistema de numeração é uma certa quantidade de unidades que deve constituir uma unidade
-                    de ordem imediatamente superior. Um sistema de numeração é um conjunto de princípios constituindo o
-                    artifício lógico de classificação em grupos e subgrupos das unidades que formam os números. Os
-                    sistemas de numeração tem seu nome derivado da sua base, ou seja, o sistema binário tem base dois, o
-                    sistema septimal tem base sete e o decimal tem base dez.
-                </p>
-
-                <p>
-                    O homem contemporâneo está familiarizado com a base 10 (decimal), no dia-a-dia, já os computadores
-                    atuais trabalham exclusivamente com a base 2 (binário), assim é preciso fazer conversões entre estas
-                    bases quando se pretende inserir algum valor para ser processado pelo computador.
-                </p>
-
-                <p>
-                    Em calculadoras e computadores, a conversão de números para o binário para a operação interna, e
-                    depois, para o decimal na visualização é um processo interno pré-programado para ser feito por ela.
-                    O ponto a ser entendido aqui é que internamente ela faz tudo em binário, em outras palavras: ela
-                    converte o que foi digitado para binário, faz o cálculo, converte o resultado para decimal e
-                    apresenta o resultado.
-                </p>
-
-                <p>
-                    No entanto quando se está escrevendo um programa é normal a introdução de valores no meio do código,
-                    e em muitas situações a digitação de códigos binários é muito complicada/longa para o programador,
-                    então existem outros códigos que facilitam a digitação, na prática é muito utilizada a base 8
-                    (octal), e a base 16 (hexadecimal), ambas derivadas da base 2 (note que estas bases facilitam a
-                    digitação somente, de qualquer forma ao ser compilado toda e qualquer base usada para escrever o
-                    programa é convertida para base 2 para que o valor seja usado pelo processador).
-                </p>
-
-
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="row no-gutters">
-            <div class="col-md-6 col-div-1">
-                <p>Desenvolvido por <a href="https://br.linkedin.com/in/rbmelolima">Roger Bernardo de Melo Lima</a></p>
-            </div>
-            <div class="col-md-6 col-div-2">
-                <p>Confira este projeto no <a href="https://github.com/rbmelolima/Bin2Dec">Github</a></p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="assets/jquery-3.4.1.min.js"></script>
-    <script src="assets/popper.min.js"></script>
-    <script src="assets/bootstrap4/js/bootstrap.min.js"></script>
-    <script src="assets/fontawesome-free-5.13.0-web/js/all.min.js"></script>
-    <script src="js/converter.js"></script>
+  <script src="js/converter.js"></script>
 </body>
 
 </html>
